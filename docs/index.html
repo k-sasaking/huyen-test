@@ -17,11 +17,14 @@
        .btn {
         font-size: 2.5rem;
        }
+       table{
+         font-size: 2.0rem;  
+        } 
        #submit {
-           min-height:100px;
+           min-height:300px;
        }
        #reset {
-        min-height:50px;
+        min-height:200px;
        }
        .form-check {
            padding: 30px;
@@ -37,11 +40,10 @@
        #a2-label {
            background-color:skyblue
        }
-
    </style>
 </head>
 <body>
-<div class="w-100 h-100">
+<div class="w-100">
    <h1 class="m-3 text-center">Huyenのテスト</h1>
    <div class="m-5">
       <h2 class="text-center">Score: <span id="correctCnt">0</span>/<span id="questionCnt">0</span></h2>
@@ -70,6 +72,19 @@
       <button id="submit" class="btn btn-primary form-control">回答する</button>
       <br/><br/>
       <button id="reset" class="btn btn-danger form-control">リセット</button>
+   </div>
+   <hr/>
+   <div class="mt-5">
+       <h2>間違った問題</h2>
+       <table id="wrongs" class="table">
+           <thead>
+            <tr>
+               <th style="width:80%;">問題</th><th style="width:20%;">回答</th>
+            </tr>
+           </thead>
+           <tbody>
+           </tbody>
+       </table>
    </div>
 </div>
 </body>
@@ -836,7 +851,7 @@ var a = [
 
 var alreadyIndex = []
 var correctCount = 0;
-
+var wrongsIndex = []
 function setQuestion(){
    while(true){
       if(alreadyIndex.length == q.length)
@@ -856,7 +871,8 @@ setQuestion();
 
 document.getElementById("submit").addEventListener('click', (function (){
    var indexNum = document.getElementById("indexNum");
-   var correct_answer = a[Number(indexNum.value)];
+   var index = Number(indexNum.value);
+   var correct_answer = a[index];
    var a1 = document.getElementById("a1");
    var user_answer = a1.checked ? "1": "2";
    document.getElementById("questionCnt").innerText = "" + alreadyIndex.length;
@@ -866,13 +882,28 @@ document.getElementById("submit").addEventListener('click', (function (){
       document.getElementById("correctCnt").innerText = "" + correctCount;
    }else{
       alert("Boo...")
+      wrongsIndex.push(index);
+      let newRow = document.getElementById("wrongs").insertRow();
+      let newCell = newRow.insertCell();
+      let newText = document.createTextNode(q[index]);
+      newCell.appendChild(newText);
+      newCell = newRow.insertCell();
+      newText = document.createTextNode(""+a[index]);
+      newCell.appendChild(newText);
    }
    setQuestion();
 }));
 
 document.getElementById("reset").addEventListener('click', (function (){
+   if(!window.confirm( 'リセットしますか？' ))
+    return;
+    let wrongs = document.getElementById("wrongs");
+   for(var i=0;i<wrongsIndex.length;i++){
+       wrongs.deleteRow(-1);
+   }
    correctCount = 0;
    alreadyIndex = [];
+   wrongsIndex = [];
    document.getElementById("questionCnt").innerText = "" + alreadyIndex.length;
    document.getElementById("correctCnt").innerText = "" + correctCount;
    setQuestion();
