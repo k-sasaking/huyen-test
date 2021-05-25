@@ -1,6 +1,30 @@
 <html>
 <head>
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <style>
+       #submit {
+           min-height:100px;
+       }
+       #reset {
+        min-height:50px;
+       }
+       p {
+           font-size: 25px;
+       }
+       .form-check {
+           padding: 30px;
+       }
+       .form-check-label {
+           padding: 50px;
+       }
+       #a1-label {
+           background-color:sandybrown
+       }
+       #a2-label {
+           background-color:skyblue
+       }
+
+   </style>
 </head>
 <body>
 <div class="container">
@@ -9,16 +33,17 @@
       <h2>Score: <span id="correctCnt">0</span>/<span id="questionCnt">0</span></h2>
    </div>
    <div class="quiz m-3">
+      <p>問題：</p>
       <p id="question">1)この漢字の意味はなんですか？</p>
-      <div class="form-check">
+      <div class="form-check form-check-inline">
          <input class="form-check-input" type="radio" name="flexRadioDefault" id="a1" checked>
-         <label class="form-check-label" for="a1">
+         <label class="form-check-label"  id="a1-label" for="a1">
            1
          </label>
        </div>
-       <div class="form-check">
+       <div class="form-check form-check-inline">
          <input class="form-check-input" type="radio" name="flexRadioDefault" id="a2">
-         <label class="form-check-label" for="a2">
+         <label class="form-check-label" id="a2-label" for="a2">
            2
          </label>
        </div>
@@ -26,9 +51,9 @@
       <br/>
    </div>
    <div class="m-3">
-      <button id="submit" class="btn btn-primary">回答する</button>
+      <button id="submit" class="btn btn-primary form-control">回答する</button>
       <br/><br/>
-      <button id="reset" class="btn btn-danger">リセット</button>
+      <button id="reset" class="btn btn-danger form-control">リセット</button>
    </div>
 </div>
 </body>
