@@ -2,20 +2,34 @@
 <head>
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
    <style>
+       h1 {
+           font-size: 5rem;
+       }
+       h2 {
+        font-size: 4rem;
+       }
+       p {
+        font-size: 3rem;
+       }
+       label {
+        font-size: 4rem;
+       }
+       .btn {
+        font-size: 2.5rem;
+       }
        #submit {
            min-height:100px;
        }
        #reset {
         min-height:50px;
        }
-       p {
-           font-size: 25px;
-       }
        .form-check {
            padding: 30px;
        }
        .form-check-label {
            padding: 50px;
+           min-width: 300px;
+           text-align: center;
        }
        #a1-label {
            background-color:sandybrown
@@ -27,27 +41,29 @@
    </style>
 </head>
 <body>
-<div class="container">
-   <h1 class="m-3">Huyenのテスト</h1>
+<div class="w-100 h-100">
+   <h1 class="m-3 text-center">Huyenのテスト</h1>
    <div class="m-5">
-      <h2>Score: <span id="correctCnt">0</span>/<span id="questionCnt">0</span></h2>
+      <h2 class="text-center">Score: <span id="correctCnt">0</span>/<span id="questionCnt">0</span></h2>
    </div>
    <div class="quiz m-3">
       <p>問題：</p>
       <p id="question">1)この漢字の意味はなんですか？</p>
-      <div class="form-check form-check-inline">
-         <input class="form-check-input" type="radio" name="flexRadioDefault" id="a1" checked>
-         <label class="form-check-label"  id="a1-label" for="a1">
-           1
-         </label>
-       </div>
-       <div class="form-check form-check-inline">
-         <input class="form-check-input" type="radio" name="flexRadioDefault" id="a2">
-         <label class="form-check-label" id="a2-label" for="a2">
-           2
-         </label>
-       </div>
-       <input id="indexNum" type="hidden" value="0"/>
+      <div class="w-100">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="a1" checked>
+            <label class="form-check-label"  id="a1-label" for="a1">
+            1
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="a2">
+            <label class="form-check-label" id="a2-label" for="a2">
+            2
+            </label>
+        </div>
+      </div>
+      <input id="indexNum" type="hidden" value="0"/>
       <br/>
    </div>
    <div class="m-3">
